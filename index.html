@@ -50,24 +50,32 @@
         left: 0;
         right: 0;
         bottom: 0;
-        border: 4px solid #fff;
+        /* ÉPAISSEUR : Passage à 10px pour un effet plus large */
+        border: 10px solid #39FF14; 
         border-radius: 10px;
         pointer-events: none;
         z-index: 10;
-        box-shadow: 0 0 20px #39FF14, 
-                    0 0 40px #39FF14, 
-                    inset 0 0 20px #39FF14;
+        /* COULEUR : Remplace #39FF14 par le code de ton choix (ici Vert Néon) */
+        box-shadow: 0 0 20px #39FF14, 0 0 40px #39FF14, inset 0 0 20px #39FF14;
         animation: flicker 1.5s infinite;
     }
 
     @keyframes flicker {
-        0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
-        20%, 24%, 55% { opacity: 0.3; }
+        0%, 18%, 22%, 25%, 53%, 57%, 100% {
+            opacity: 1;
+            /* COULEUR : Doit être identique au box-shadow ci-dessus */
+            box-shadow: 0 0 20px #39FF14, 0 0 40px #39FF14, inset 0 0 20px #39FF14;
+        }
+        20%, 24%, 55% {
+            opacity: 0.3;
+            box-shadow: none;
+        }
     }
 
     .container {
         position: absolute;
-        bottom: 5%; /* Ajuste ce % pour placer le bouton sur le mégaphone */
+        /* POSITION BOUTON : Descendu à 3% pour être tout en bas */
+        bottom: 3%; 
         left: 0;
         width: 100%;
         display: flex;
@@ -91,18 +99,7 @@
         filter: drop-shadow(0 0 20px #8d08e5);
     }
 
-    /* Mise à jour de l'animation pour inclure la nouvelle couleur */
-    @keyframes flicker {
-        0%, 18%, 22%, 25%, 53%, 57%, 100% { 
-            opacity: 1; 
-            box-shadow: 0 0 20px #39FF14, 0 0 40px #39FF14, inset 0 0 20px #39FF14;
-        }
-        20%, 24%, 55% { 
-            opacity: 0.3; 
-            box-shadow: none;
-        }
-    }
-
+    
     .btn-animation:hover {
         transform: scale(1.1);
         filter: drop-shadow(0 0 30px #de0876);
