@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta property="og:title" content="Débarras Maison & Appartement - Style Universel">
+    <meta property="og:description" content="Besoin de vider un logement ? Découvrez nos services de débarras rapide et recyclage.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://votre-lien-archive-host.com/pub.html">
+    <meta property="og:image" content="preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <title>Débarras Style Universel</title>
+
+    <style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000; /* Garde les bandes noires sur les côtés */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    /* NOUVEAU : Ce bloc force le néon à rester sur l'image */
+    .cadre-pub {
+        position: relative;
+        height: 100vh;
+        /* On définit la forme de l'image (Largeur / Hauteur) */
+        aspect-ratio: 1056 / 501; 
+        background-image: url('fond.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+    }
+
+    /* MODIFIÉ : On passe de position: fixed à absolute */
+    .neon-border {
+        position: absolute; /* Il se colle désormais au bord du cadre-pub */
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        border: 4px solid #fff;
+        border-radius: 10px;
+        pointer-events: none;
+        z-index: 999;
+        box-shadow: 0 0 15px #fff, 
+                    0 0 30px #0077ff, 
+                    inset 0 0 15px #0077ff;
+        animation: flicker 2s infinite;
+    }
+
+    /* MODIFIÉ : Le container devient relatif au cadre */
+    .container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* L'ANIMATION CLIGNOTANTE */
+    @keyframes flicker {
+        0%, 18%, 22%, 25%, 53%, 57%, 100% {
+            opacity: 1;
+            box-shadow: 0 0 15px #fff, 0 0 30px #0077ff, inset 0 0 15px #0077ff;
+        }
+        20%, 24%, 55% {
+            opacity: 0.4;
+            box-shadow: none;
+        }
+    }
+
+    .btn-animation {
+        width: 600px;
+        max-width: 90%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        /* Position de base : descendu de 260px */
+        transform: translateY(260px); 
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        /* Note : j'ai enlevé l'animation fadeIn car elle entrait en conflit avec le placement */
+    }
+
+    .btn-animation:hover {
+        /* On garde la position et l'agrandissement */
+        transform: translateY(260px) scale(1.1);
+        
+        /* AJOUTE LE FILTRE ICI (choisis-en un seul) */
+        filter: drop-shadow(0px 0px 40px rgba(20, 20, 255, 20)); 
+    }
+</style>
+</head>
+<body>
+    <!-- On crée un cadre qui a la taille de l'image -->
+    <div class="cadre-pub">
+        <div class="neon-border"></div>
+        <div class="container">
+            <a href="https://debarrasse-toit.fr" target="_blank">
+                <img src="bouton.png" alt="Visiter le site" class="btn-animation">
+            </a>
+        </div>
+    </div>
+</body>
+</html>
