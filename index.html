@@ -51,26 +51,26 @@
         right: 0;
         bottom: 0;
         /* ÉPAISSEUR : Passage à 10px pour un effet plus large */
-        border: 10px solid #39FF14; 
+        border: 10px solid #00ffff; 
         border-radius: 10px;
         pointer-events: none;
         z-index: 10;
         /* COULEUR : Remplace #39FF14 par le code de ton choix (ici Vert Néon) */
-        box-shadow: 0 0 20px #39FF14, 0 0 40px #39FF14, inset 0 0 20px #39FF14;
-        animation: flicker 1.5s infinite;
+        box-shadow: 0 0 20px #00FFFF, 0 0 40px #00FFFF, inset 0 0 20px #00FFFF;
+        animation: flicker 1s infinite;
     }
 
     @keyframes flicker {
-        0%, 18%, 22%, 25%, 53%, 57%, 100% {
-            opacity: 1;
-            /* COULEUR : Doit être identique au box-shadow ci-dessus */
-            box-shadow: 0 0 20px #39FF14, 0 0 40px #39FF14, inset 0 0 20px #39FF14;
-        }
-        20%, 24%, 55% {
-            opacity: 0.3;
-            box-shadow: none;
-        }
+    0%, 100% { 
+        opacity: 0; /* Éteint complètement */
+        box-shadow: none;
     }
+    50% { 
+        opacity: 1; /* Allumé à fond */
+        /* N'oublie pas de mettre TA couleur ici (ex: vert #39FF14) */
+        box-shadow: 0 0 20px #39FF14, 0 0 40px #39FF14, inset 0 0 20px #39FF14;
+    }
+}
 
     .container {
         position: absolute;
