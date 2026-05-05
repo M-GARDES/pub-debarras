@@ -20,51 +20,52 @@
         padding: 0;
         width: 100%;
         height: 100%;
-        /* On supprime le flex qui centrait le cadre pour laisser l'image remplir tout */
+        /* Utilise le beige de l'image pour supprimer le noir sans couper le logo */
+        background-color: #e5c09a; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
         overflow: hidden;
     }
 
     .cadre-pub {
         position: relative;
-        width: 100vw;
-        height: 100vh;
-        /* "cover" au lieu de "contain" : l'image remplit tout l'écran sans laisser de noir */
-        background-image: url('fond.jpg');
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover; 
+        display: inline-block; /* Force le cadre à serrer l'image */
+        max-width: 95vw;
+        max-height: 95vh;
+    }
+
+    .img-fond {
+        display: block;
+        max-width: 100%;
+        max-height: 95vh;
+        width: auto;
+        height: auto;
+        border-radius: 5px;
     }
 
     .neon-border {
         position: absolute;
-        /* Le néon se colle maintenant aux bords de l'écran */
-        top: 15px;
-        left: 15px;
-        right: 15px;
-        bottom: 15px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         border: 4px solid #fff;
         border-radius: 10px;
         pointer-events: none;
         z-index: 10;
         box-shadow: 0 0 15px #fff, 0 0 30px #0077ff, inset 0 0 15px #0077ff;
-        animation: flicker 2s infinite;
+        animation: flicker 1.5s infinite;
     }
 
     @keyframes flicker {
-        0%, 18%, 22%, 25%, 53%, 57%, 100% {
-            opacity: 1;
-            box-shadow: 0 0 15px #fff, 0 0 30px #0077ff, inset 0 0 15px #0077ff;
-        }
-        20%, 24%, 55% {
-            opacity: 0.4;
-            box-shadow: none;
-        }
+        0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+        20%, 24%, 55% { opacity: 0.3; }
     }
 
     .container {
         position: absolute;
-        /* On place le bouton par rapport au bas de l'écran */
-        bottom: 80px; 
+        bottom: 10%; /* Ajuste ce % pour placer le bouton sur le mégaphone */
         left: 0;
         width: 100%;
         display: flex;
@@ -73,23 +74,26 @@
     }
 
     .btn-animation {
-        width: 450px;
-        max-width: 80%;
+        width: 40%;
+        min-width: 200px;
         height: auto;
         cursor: pointer;
-        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+        transition: transform 0.3s ease;
     }
 
     .btn-animation:hover {
         transform: scale(1.1);
-        filter: brightness(1.2) drop-shadow(0px 0px 25px #0077ff);
+        filter: drop-shadow(0 0 15px #0077ff);
     }
 </style>
 </head>
 <body>
-    <!-- On crée un cadre qui a la taille de l'image -->
     <div class="cadre-pub">
+        <!-- L'image de fond n'est plus en background-image mais ici -->
+        <img src="fond.jpg" class="img-fond" alt="Débarras Toit">
+        
         <div class="neon-border"></div>
+        
         <div class="container">
             <a href="https://debarrasse-toit.fr" target="_blank">
                 <img src="bouton.png" alt="Visiter le site" class="btn-animation">
